@@ -11,6 +11,14 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 
+
+
+
+// to upload the database comment-in the LoadRows() - in the Index()- and Run the ISS Express ONCE
+// it will then populate the database with images, actors, and dvds 
+// then you must comment-out the LoadRows() before running ISS or doing any search 
+// otherwise it will populate the database again
+
 namespace DVDStore.WEB.Controllers
 {
     public class HomeController : Controller
@@ -68,9 +76,7 @@ namespace DVDStore.WEB.Controllers
 
             act3.Movies.Add(mov1);
 
-
-
-
+            //image 2         
 
             Image im2 = Image.FromFile(@"C:\Users\ClevelandCodes\Pictures\images\003.gif");
             byte[] pic2 = ImageToByteArray(im2);
@@ -182,26 +188,10 @@ namespace DVDStore.WEB.Controllers
 
         }
 
+
+
         public ActionResult GetAllPictures()
         {
-            //Image im = Image.FromFile(@"C:\Users\ClevelandCodes\Pictures\images\006.gif");
-            //byte[] pic = ImageToByteArray(im);
-
-            //DVD mov = new DVD
-            //{
-            //    Title = "Back to the Future",
-            //    ReleaseDate = new DateTime(1985, 10, 11),
-            //    Price = 1.59M,
-            //    Genre = "Adventure",
-            //    Actor = "Michael J. Fox",
-            //    Rating = "PG",
-            //    Description = "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.",
-            //    PictureSmall = pic,
-            //};
-
-            //db.DVDs.Add(mov);
-            //db.SaveChanges();
-
             Image img = Image.FromFile(@"C:\Users\ClevelandCodes\Pictures\images\default.gif");
             byte[] defpic = ImageToByteArray(img);
 
@@ -238,9 +228,9 @@ namespace DVDStore.WEB.Controllers
             var dvdpic = from d in db.DVDs
                          where d.Id == id
                          select d.PictureSmall;
-                          
 
-            string pic ="";
+
+            string pic = "";
             string imgBase64;
             string imgDataURL;
 
@@ -263,39 +253,20 @@ namespace DVDStore.WEB.Controllers
 
         }
 
-        //public ActionResult Filter(string filterText, string movieGenre, string movieRating, string LastName)
-        //{
-        //    FindAllDVDs newsearch = new FindAllDVDs();
-        //    IEnumerable<Data.Models.DVD> Results;
-
-        //    if (LastName != null)
-        //    {
-        //        Results = from d in db.DVDs
-        //                  from a in d.Actors
-        //                  where a.Last == LastName
-        //                  select d;
-        //    }
-        //    if (movieRating !=null)
-        //    {
-
-        //    }
-
-        //    return View();
-
-
-        //}
-
 
         public ActionResult Index(string filterText, string movieGenre, string movieRating, string LastName)
         {
+            // to upload the database comment-in the LoadRows() - in the Index()- and Run the ISS Express ONCE
+            // it will then populate the database with images, actors, and dvds 
+            // then you must comment-out the LoadRows() before running ISS or doing any search 
+            // otherwise it will populate the database again
+
+
 
             //LoadRows();
             SearchGenre();
             SearchRating();
             GetAllPictures();
-            
-
-
 
             FindAllDVDs findDVDs = new FindAllDVDs();
             IEnumerable<Data.Models.DVD> dvds = findDVDs.FindAllDVD("", "");
@@ -328,15 +299,7 @@ namespace DVDStore.WEB.Controllers
                 Results = Results.Where(x => x.Rating == movieRating);
             }
 
-
-
-
-
-
             return View(Results.ToList());
-            
-
-
         }
 
         public ActionResult About()
@@ -345,9 +308,6 @@ namespace DVDStore.WEB.Controllers
 
             return View();
         }
-
-
-
 
         public ActionResult Details(int id)
         {
@@ -368,7 +328,5 @@ namespace DVDStore.WEB.Controllers
         }
 
     }
-
-
 
 }

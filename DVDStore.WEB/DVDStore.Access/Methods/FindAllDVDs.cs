@@ -8,10 +8,6 @@ using System.Data;
 using System.Data.Entity;
 using System.Net;
 using System.Web.Mvc;
-//using MvcMovie.Models;
-//using System.IO;
-//using System.Drawing;
-//using System.Drawing.Imaging;
 
 
 
@@ -19,19 +15,8 @@ namespace DVDStore.Access.Methods
 {
     public class FindAllDVDs
     {
-
-
-        //public IEnumerable<DVDStore.Data.Models.Actor> Actor(string ActorFind)
-        //{
-        //    var searchactor = from actor in db.Actors
-        //                      select LastName;
-
-        //    re
-        //}
-
+        
         private DVDStoreContext db = new DVDStoreContext();
-
-            //List<FindAllDVDs> dVDs = new List<FindAllDVDs>();
 
         public dynamic ViewBag { get; }
 
@@ -40,10 +25,6 @@ namespace DVDStore.Access.Methods
             throw new NotImplementedException();
         }
 
-        //public object FindAllDVD()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
     public List<string> GetAllTitles(string DVDTitles, string searchString)
         {
@@ -55,8 +36,6 @@ namespace DVDStore.Access.Methods
 
             return DVDQuery.ToList();
         }
-
-
 
 
         public IEnumerable<DVDStore.Data.Models.DVD> FindAllDVD(string DVDTitles, string searchString)
@@ -82,35 +61,15 @@ namespace DVDStore.Access.Methods
 
         }
 
+
         public DVDStore.Data.Models.DVD GetDVDById(int? id)
         {
-            //if not null return something
 
             DVD DVDQuery = db.DVDs.Find(id);
-                //from d in db.DVD
-                //           where d.Id == id
-                //           select d
-               
-
             return DVDQuery;
-
-            //query and return it
-            //when calling details callt his method 
-            //pass this type GetDVDBy ID to the Controller
-            //from Controller to the View 
-
-
 
         }
 
-        //static public byte[] ImageToByteArray(Image img)
-        //{
-        //    MemoryStream ms = new MemoryStream();
-        //    img.Save(ms, ImageFormat.Gif);
-        //    return ms.ToArray();
-        //}
-
     }
-  
-
-    }
+ 
+}
