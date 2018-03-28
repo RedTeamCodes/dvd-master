@@ -309,6 +309,13 @@ namespace DVDStore.WEB.Controllers
             return View();
         }
 
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
         public ActionResult Details(int id)
         {
 
