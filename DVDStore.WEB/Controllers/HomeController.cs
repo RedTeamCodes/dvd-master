@@ -304,7 +304,7 @@ namespace DVDStore.WEB.Controllers
             if (string.IsNullOrWhiteSpace(filterText) == false)
             {
                 //search on a specific term
-                Results = dvds.Where(d => d.Title.ToLower().Contains(filterText));
+                Results = Results.Where(d => d.Title.ToLower().Contains(filterText.ToLower()));
             }
 
             //actorsearch
@@ -320,12 +320,12 @@ namespace DVDStore.WEB.Controllers
 
             if (!string.IsNullOrEmpty(movieGenre))
             {
-                Results = dvds.Where(x => x.Genre == movieGenre);
+                Results = Results.Where(x => x.Genre == movieGenre);
             }
 
             if (!string.IsNullOrEmpty(movieRating))
             {
-                Results = dvds.Where(x => x.Rating == movieRating);
+                Results = Results.Where(x => x.Rating == movieRating);
             }
 
 
