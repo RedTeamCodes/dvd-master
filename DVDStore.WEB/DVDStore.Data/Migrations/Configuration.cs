@@ -15,15 +15,9 @@ namespace DVDStore.Data.Migrations
 
         protected override void Seed(DVDStore.Data.Models.DVDStoreContext context)
         {
-          //  context.DVD.AddOrUpdate(i => i.Title,
-          //     new Models.DVD
-          //     {
-          //         Title = "When Harry Met Sally",
-          //         ReleaseDate = DateTime.Parse("1989-1-11"),
-          //         Price = 7.99M,
-               
-          //    }
-          //);
+        
+
+
         }
     }
 }
